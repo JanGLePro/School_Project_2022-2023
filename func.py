@@ -1,6 +1,7 @@
 import requests
 from webbrowser import open_new_tab
 from pathlib import Path
+from playsound import playsound
 
 
 def variables(mas):
@@ -54,3 +55,4 @@ def search_on_disks(name, disk):
             break        
         k += 1
     return a
+
