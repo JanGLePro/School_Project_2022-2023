@@ -1,7 +1,6 @@
 import requests
 from webbrowser import open_new_tab
 from pathlib import Path
-from playsound import playsound
 
 
 def variables(mas):

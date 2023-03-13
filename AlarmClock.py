@@ -3,34 +3,34 @@ import pyglet
 
 
 class Clocks:
-    def __init__(self, time=datetime.datetime, count_of_repeat=1, repeat_interval=dict):
-        self.data = [{'time': time, 'count_of_repeat': count_of_repeat, 'repeat_interval': repeat_interval}]
-        self.sound = pyglet.media.load('file.mp3', streaming=False)
+    def __init__(self):
+        self.data = []
 
-    def append(self, time=datetime.datetime, count_of_repeat=1, repeat_interval=dict):
-        self.data.append({'time': time, 'count_of_repeat': count_of_repeat, 'repeat_interval': repeat_interval})
+    def append(self, repeat_interval, time=datetime.datetime.now(), count_of_repeat=1, music='file.mp3'):
+        self.data.append({'time': time, 'count_of_repeat': count_of_repeat, 'repeat_interval': repeat_interval,
+                          'sound': music})
 
     def alarm(self):
-        flag = False
+        musics = []
         for item in self.data:
-            if datetime.datetime.now() % item['repeat_interval'] == 0:
+            if datetime.datetime.now() > item['time']:
+                item['count_of_repeat'] -= 1
 
-                if datetime.datetime.now() > item['time']:
-                    flag = True
-                    item['count_of_repeat'] -= 1
-                    if item['count_of_repeat'] == 0:
-                        del self.data[self.data.index(item)]
+                musics.append(item['sound'])
+                if item['count_of_repeat'] == 0:
+                    del self.data[self.data.index(item)]
+                    continue
+                item['time'] = max(item['time'], datetime.datetime.now()) + item['repeat_interval']
+        if musics:
+            self.play_musics(musics)
 
-                    time_d = item['repeat_interval']
-                    item['time'] += datetime.timedelta(days=time_d['days'], hours=time_d['hours'],
-                                                      minutes=time_d['minute'])
-        if flag:
-            self.play()
+    def play_musics(self, musics):
+        for music in musics:
+            pyglet.media.load(music, streaming=False).play()
 
-    def play(self):
-        self.sound.play()
 
-clock = Clocks(time=datetime.datetime(year=2023, month=3, day=3, hour=14, minute=47), count_of_repeat=3,
-               repeat_interval=datetime.timedelta(minute=1))
+clock = Clocks()
+clock.append(time=datetime.datetime.now(), count_of_repeat=3, repeat_interval=datetime.timedelta(seconds=10))
+clock.append(repeat_interval=datetime.timedelta(seconds=35), count_of_repeat=2, music='top.mp3')
 while True:
     clock.alarm()
