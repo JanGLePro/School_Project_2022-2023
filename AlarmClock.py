@@ -1,4 +1,7 @@
 import datetime
+import os
+import time
+
 import pygame
 
 pygame.init()
@@ -29,10 +32,13 @@ class Clocks:
 
     def play_musics(self, musics):
         for music in musics:
-            pygame.mixer.Sound(music).play()
+            pygame.mixer.Sound(music).play(loops=2)
+
+    def stop_music(self):
+        pygame.mixer.stop()
 
 
 # clock = Clocks()
-# clock.append(datetime.timedelta(seconds=35), count_of_repeat=-1, music='top.mp3')
+# clock.append(datetime.timedelta(seconds=1), count_of_repeat=-1, music='top.mp3')
 # while True:
 #     clock.alarm()
