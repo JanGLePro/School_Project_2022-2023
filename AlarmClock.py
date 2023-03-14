@@ -1,5 +1,8 @@
 import datetime
-import pyglet
+import pygame
+
+pygame.init()
+pygame.mixer.init()
 
 
 class Clocks:
@@ -26,11 +29,10 @@ class Clocks:
 
     def play_musics(self, musics):
         for music in musics:
-            pyglet.media.load(music, streaming=False).play()
+            pygame.mixer.Sound(music).play()
 
 
-clock = Clocks()
-clock.append(time=datetime.datetime.now(), count_of_repeat=3, repeat_interval=datetime.timedelta(seconds=10))
-clock.append(repeat_interval=datetime.timedelta(seconds=35), count_of_repeat=2, music='top.mp3')
-while True:
-    clock.alarm()
+# clock = Clocks()
+# clock.append(datetime.timedelta(seconds=35), count_of_repeat=-1, music='top.mp3')
+# while True:
+#     clock.alarm()

@@ -1,6 +1,7 @@
 import requests
 from webbrowser import open_new_tab
 from pathlib import Path
+import os
 
 
 def variables(mas):
@@ -55,3 +56,17 @@ def search_on_disks(name, disk):
         k += 1
     return a
 
+
+def shutdown(command, time=0):
+    if command == 'зав':
+        os.system(f'shutdown -s -f -t {time}')
+    elif command == 'пере':
+        os.system(f'shutdown -r -f -t {time}')
+    elif command == 'гиб':
+        os.system('shutdown -h')
+    elif command == 'блок':
+        os.system('Rundll32.exe user32.dll,LockWorkStation')
+    elif command == 'вых':
+        os.system('shutdown -l')
+    elif command == 'отм':
+        os.system('shutdown -a')
