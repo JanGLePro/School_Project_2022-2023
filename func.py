@@ -78,4 +78,25 @@ def math_it(message):
     except:
         return "U're FUCKING IDIOT"
     
+def mute():
+    os.system('setvol mute')
+
+
+def unmute():
+    os.system('setvol unmute')
+
+
+def volume(n):  # 0 < n < 100
+    n = max(min(n, 100), 0)
+    if n == 0:
+        mute()
+    else:
+        unmute()
+        os.system(f'setvol {n}')
+
+
+def lightness(n):  # 0 < n < 100
+    n = max(min(n, 100), 0)
+    os.system('powershell (Get-WmiObject -Namespace root/WMI'
+              f' -Class WmiMonitorBrightnessMethods).WmiSetBrightness(1,{n})')
 
