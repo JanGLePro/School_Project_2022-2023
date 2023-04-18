@@ -70,3 +70,7 @@ def shutdown(command, time=0):
         os.system('shutdown -l')
     elif command == 'отм':
         os.system('shutdown -a')
+
+def math_it(message):
+    return(eval(message))
+
