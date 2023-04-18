@@ -71,3 +71,11 @@ def shutdown(command, time=0):
         os.system('shutdown -l')
     elif command == 'отм':
         os.system('shutdown -a')
+
+def math_it(message):
+    try:
+        return(eval(message))
+    except:
+        return "U're FUCKING IDIOT"
+    
+
