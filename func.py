@@ -3,6 +3,7 @@ from webbrowser import open_new_tab
 from pathlib import Path
 import os
 
+os.system('chcp 1251')
 
 def variables(mas):
     outp = []

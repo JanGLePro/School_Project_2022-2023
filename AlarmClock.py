@@ -3,7 +3,6 @@ import os
 import time
 
 import pygame
-
 pygame.init()
 pygame.mixer.init()
 
@@ -37,8 +36,7 @@ class Clocks:
     def stop_music(self):
         pygame.mixer.stop()
 
-
-# clock = Clocks()
-# clock.append(datetime.timedelta(seconds=1), count_of_repeat=-1, music='top.mp3')
-# while True:
-#     clock.alarm()
+clock = Clocks()
+clock.append(datetime.timedelta(seconds=60), count_of_repeat=-1, music='Pirates.mp3')
+while True:
+    clock.alarm()
