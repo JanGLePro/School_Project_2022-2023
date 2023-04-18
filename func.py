@@ -72,5 +72,9 @@ def shutdown(command, time=0):
         os.system('shutdown -a')
 
 def math_it(message):
-    return(eval(message))
+    try:
+        return(eval(message))
+    except:
+        return "U're FUCKING IDIOT"
+    
 
