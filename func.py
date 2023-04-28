@@ -5,6 +5,7 @@ import os
 
 os.system('chcp 1251')
 
+
 def variables(mas):
     outp = []
     for i in mas['alternative']:
@@ -72,9 +73,10 @@ def shutdown(command, time=0):
     elif command == 'отм':
         os.system('shutdown -a')
 
+
 def math_it(message):
     try:
-        return(eval(message))
+        return eval(message)
     except:
         return "U're FUCKING IDIOT"
     
@@ -100,3 +102,5 @@ def lightness(n):  # 0 < n < 100
     os.system('powershell (Get-WmiObject -Namespace root/WMI'
               f' -Class WmiMonitorBrightnessMethods).WmiSetBrightness(1,{n})')
 
+def get_func():
+    return ...

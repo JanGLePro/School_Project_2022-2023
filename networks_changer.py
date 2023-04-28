@@ -1,6 +1,7 @@
 import os
 os.system('chcp 1251')
 
+
 def out_all_networks():
     mas = []
     output = os.popen('netsh wlan show profiles').read()
