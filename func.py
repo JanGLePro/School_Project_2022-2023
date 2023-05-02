@@ -2,8 +2,25 @@ import requests
 from webbrowser import open_new_tab
 from pathlib import Path
 import os
+from voice import speaker
 
 os.system('chcp 1251')
+
+
+def out_all_networks():
+    mas = []
+    output = os.popen('netsh wlan show profiles').read()
+    for item in output.split('\n'):
+        item = list(item.split(': '))
+        if len(item) == 1:
+            continue
+        title = item[-1]
+        mas.append(title)
+    return mas
+
+
+def connect_network(title):
+    os.system(f'netsh wlan connect name="{title}"')
 
 
 def variables(mas):
@@ -59,27 +76,37 @@ def search_on_disks(name, disk):
     return a
 
 
-def shutdown(command, time=0):
-    if command == 'зав':
-        os.system(f'shutdown -s -f -t {time}')
-    elif command == 'пере':
-        os.system(f'shutdown -r -f -t {time}')
-    elif command == 'гиб':
-        os.system('shutdown -h')
-    elif command == 'блок':
-        os.system('Rundll32.exe user32.dll,LockWorkStation')
-    elif command == 'вых':
-        os.system('shutdown -l')
-    elif command == 'отм':
-        os.system('shutdown -a')
+def shutdown():
+    os.system(f'shutdown -s -f -t 10')
+
+
+def reboot():
+    os.system(f'shutdown -r -f -t 10')
+
+
+def hibernation():
+    os.system('shutdown -h')
+
+
+def blocking():
+    os.system('Rundll32.exe user32.dll,LockWorkStation')
+
+
+def log_out():
+    os.system('shutdown -l')
+
+
+def cancellation():
+    os.system('shutdown -a')
 
 
 def math_it(message):
     try:
-        return eval(message)
+        speaker(eval(message))
     except:
-        return "U're FUCKING IDIOT"
-    
+        speaker("U're FUCKING LOOSER")
+
+
 def mute():
     os.system('setvol mute')
 
@@ -102,5 +129,6 @@ def lightness(n):  # 0 < n < 100
     os.system('powershell (Get-WmiObject -Namespace root/WMI'
               f' -Class WmiMonitorBrightnessMethods).WmiSetBrightness(1,{n})')
 
-def get_func():
+
+def passive():
     return ...

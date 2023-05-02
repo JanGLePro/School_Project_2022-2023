@@ -16,4 +16,6 @@ def out_all_networks():
 
 def connect_network(title):
     os.system(f'netsh wlan connect name="{title}"')
-connect_network(out_all_networks()[2])
+
+
+# connect_network(out_all_networks()[2])
