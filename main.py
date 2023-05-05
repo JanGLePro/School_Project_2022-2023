@@ -61,3 +61,4 @@ def execute_cmd(cmd, voice):
 
 # начать прослушивание команд
 stt.va_listen(va_respond)
+print(666)
