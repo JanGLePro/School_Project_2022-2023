@@ -4,6 +4,9 @@ import sounddevice as sd
 import queue
 import json
 
+from AlarmClock import Clocks
+
+clock = Clocks()
 model = vosk.Model("vosk-model-small-ru-0.22")
 samplerate = 16000
 device = 1
@@ -26,5 +29,6 @@ def va_listen(callback):
             data = q.get()
             if rec.AcceptWaveform(data):
                 callback(json.loads(rec.Result())["text"])
+            clock.alarm()
             #else:
             #    print(rec.PartialResult())

@@ -12,6 +12,7 @@ class Clocks:
         self.data = []
 
     def append(self, repeat_interval, time=datetime.datetime.now(), count_of_repeat=1, music='file.mp3'):
+        music = 'musics/' + music
         self.data.append({'time': time, 'count_of_repeat': count_of_repeat, 'repeat_interval': repeat_interval,
                           'sound': music})
 
@@ -31,13 +32,7 @@ class Clocks:
 
     def play_musics(self, musics):
         for music in musics:
-            pygame.mixer.Sound(music).play(loops=2)
+            pygame.mixer.Sound(music).play()
 
     def stop_music(self):
         pygame.mixer.stop()
-
-
-clock = Clocks()
-clock.append(datetime.timedelta(seconds=60), count_of_repeat=-1, music='Pirates.mp3')
-while True:
-    clock.alarm()

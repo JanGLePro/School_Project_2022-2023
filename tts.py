@@ -1,6 +1,7 @@
 import pyttsx3
 engine = pyttsx3.init()
-engine.setProperty('rate', 140)
+voice_speed = 140
+engine.setProperty('rate', voice_speed)
 
 
 def speaker(text):
