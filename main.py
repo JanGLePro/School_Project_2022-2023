@@ -5,7 +5,8 @@ from pymorphy2 import MorphAnalyzer as MA
 from mega_dict import mega_dict, math_dict
 from func import *
 withouth_data = ['hibernation', 'blocking', 'log_out', 'cancellation', 'mute', 'unmute',
-                 'passive', 'play_greetings', 'joke', 'get_help', 'how_time', 'out_all_networks']
+                 'passive', 'play_greetings', 'joke', 'get_help', 'how_time', 'out_all_networks', 'click',
+                 'changing_the_layout']
 ma = MA()
 
 
@@ -57,6 +58,11 @@ def execute_cmd(cmd, text_message):
     else:
         text_message = [str(mega_dict[ma.parse(i)[0].normal_form]) if ma.parse(i)[0].normal_form in mega_dict
                         else i for i in text_message.split()]
+        n = 0
+        for i in text_message:
+            if i.isdigit():
+                n += int(i)
+
         if cmd == 'get_weather':
             for word in text_message:
                 if 'Geox' in ma.parse(word)[0].tag:
@@ -103,10 +109,6 @@ def execute_cmd(cmd, text_message):
                                                                                                                 '', 1))
                     break
         else:
-            n = 10
-            for i in text_message:
-                if i.isdigit():
-                    n += int(i)
             eval(cmd)(n)
 
 

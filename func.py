@@ -1,12 +1,12 @@
 import datetime
+import webbrowser
+
 from stt import clock
 import requests
-from webbrowser import open_new_tab
-from pathlib import Path
+from selenium import webdriver
 import os
 import keyboard
 import pyautogui
-from AlarmClock import Clocks
 from tts import speaker
 import random
 from googletrans import Translator  # pip install googletrans==3.1.0a0
@@ -32,13 +32,6 @@ def connect_network(title):
     os.system(f'netsh wlan connect name="{title}"')
 
 
-def variables(mas):
-    outp = []
-    for i in mas['alternative']:
-        outp.append(i['transcript'])
-    return outp
-
-
 def get_weather(city_name):
     API_key = "d879234d7b125e8f3ed1e2d29adbeef9"
     base_url = "http://api.openweathermap.org/data/2.5/forecast"
@@ -59,7 +52,8 @@ def get_weather(city_name):
 
 
 def web_search(text):
-    open_new_tab(text)
+    chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+    webbrowser.get(chrome_path).open(text)
 
 
 def how_time():
@@ -181,13 +175,9 @@ def alarm_func(hours, minutes):
         clock.append(datetime.timedelta(seconds=11), datetime.datetime.now() +
                      datetime.timedelta(hours=hours, minutes=minutes), 7)
 
-        
+
 def changing_the_layout():
     keyboard.press_and_release('win + space')
-
-
-def move(x, y):
-    pyautogui.moveRel(x, y, 1)
 
 
 def scroll(n):
