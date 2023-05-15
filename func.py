@@ -186,12 +186,12 @@ def changing_the_layout():
     keyboard.press_and_release('win + space')
 
 
-def move(x, y):
-    pyautogui.moveRel(x, y, 1)
+def scroll_down():
+    pyautogui.scroll(5)
+    
 
-
-def scroll(n):
-    pyautogui.scroll(n)
+def scroll_up():
+    pyautogui.scroll(-5)
 
 
 def click():
