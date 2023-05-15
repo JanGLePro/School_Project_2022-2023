@@ -104,7 +104,7 @@ def math_it(message):
     try:
         speaker(eval(message))
     except:
-        speaker("U're FUCKING LOOSER")
+        ...
 
 
 def mute():
