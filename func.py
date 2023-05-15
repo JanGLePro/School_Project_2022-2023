@@ -3,10 +3,12 @@ import webbrowser
 
 from stt import clock
 import requests
-from selenium import webdriver
+from webbrowser import open_new_tab
+from pathlib import Path
 import os
 import keyboard
 import pyautogui
+from AlarmClock import Clocks
 from tts import speaker
 import random
 from googletrans import Translator  # pip install googletrans==3.1.0a0
@@ -175,13 +177,17 @@ def alarm_func(hours, minutes):
         clock.append(datetime.timedelta(seconds=11), datetime.datetime.now() +
                      datetime.timedelta(hours=hours, minutes=minutes), 7)
 
-
+        
 def changing_the_layout():
     keyboard.press_and_release('win + space')
 
 
-def scroll(n):
-    pyautogui.scroll(n)
+def scroll_down():
+    pyautogui.scroll(5)
+
+
+def scroll_up():
+    pyautogui.scroll(-5)
 
 
 def click():
