@@ -4,7 +4,8 @@ import requests
 from webbrowser import open_new_tab
 from pathlib import Path
 import os
-
+import keyboard
+import pyautogui
 from AlarmClock import Clocks
 from tts import speaker
 import random
@@ -179,3 +180,19 @@ def alarm_func(hours, minutes):
             hours -= 1
         clock.append(datetime.timedelta(seconds=11), datetime.datetime.now() +
                      datetime.timedelta(hours=hours, minutes=minutes), 7)
+
+        
+def changing_the_layout():
+    keyboard.press_and_release('win + space')
+
+
+def move(x, y):
+    pyautogui.moveRel(x, y, 1)
+
+
+def scroll(n):
+    pyautogui.scroll(n)
+
+
+def click():
+    pyautogui.click()
