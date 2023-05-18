@@ -102,7 +102,7 @@ def math_it(message):
     try:
         speaker(eval(message))
     except:
-        speaker("U're FUCKING LOOSER")
+        ...
 
 
 def mute():
@@ -153,6 +153,10 @@ def get_help():
     text += ['менять звук и яркость']
     text += ['говорить погоду']
     text += ['переподключать интернет и ставить будильник']
+    text += ['выводить используемые сети']
+    text += ['считать']
+    text += ['менять раскладку']
+    text += ['листать страницы']
     speaker(' ...'.join(text))
 
 
