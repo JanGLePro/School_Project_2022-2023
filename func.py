@@ -17,6 +17,9 @@ translator = Translator()
 
 os.system('chcp 1251')
 
+webbrowser.register('Chrome', None,
+                    webbrowser.BackgroundBrowser('C:\Program Files (x86)\Google\Chrome\Application\chrome.exe'))
+
 
 def out_all_networks():
     mas = []
@@ -54,8 +57,7 @@ def get_weather(city_name):
 
 
 def web_search(text):
-    chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
-    webbrowser.get(chrome_path).open(text)
+    webbrowser.get(using='Chrome').open_new_tab('https://yandex.ru/search/?text=' + text)
 
 
 def how_time():
